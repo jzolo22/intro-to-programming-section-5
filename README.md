@@ -155,3 +155,28 @@ Create a pull request and submit:
 ---
 
 Created by [Code the Dream](https://www.codethedream.org)
+
+---
+
+1. `Uncaught SyntaxError: Unexpected token '='` - index.js:55
+   - I'm thinking line 55 in the js file has an extra = somewhere
+2. `Uncaught SyntaxError: Unexpected identifier` - index.js:71
+   - the word function spelled wrong
+3. `Uncaught TypeError: Assignment to constant variable.` - index.js:77
+   - on line 13 `maxNumberOfAttempts` variable is a const, but then we're trying to reassign it, so it needs to be changed to a let
+4. `Uncaught TypeError: Cannot read properties of undefined (reading 'style')` - index.js:67
+   - that means that `messages[elementIndex]` is undefined
+   - I `console.logged` what `messages` and `elementIndex` were on line 67 inside the forLoop and determined that elementIndex was going up too high by one
+   - I changed to elementIndex < messages.length, instead of <=
+5. `Uncaught TypeError: Assignment to constant variable.` - index.js:28
+   - `attemps` was a const but being reset. changed to a let
+6. `Uncaught TypeError: Cannot read properties of null (reading 'style') at HTMLButtonElement.checkGuess` - index.js:33
+   - means that `numberOfGuessesMessage` is null
+   - check what `numberOfGuessesMessage` is set to - it's set on line 8
+   - check the html and it's actually called `number-of-guesses` not `num-of-guesses`
+     - need to change either the html or line 8 in the js
+7. Starts counting guesses backwards (into the negatives)
+   - `maxNumberOfAttempts` is getting reset to 0 in the setup
+   - change that to `attempts` in setup
+8. If you choose to play again, the Submit Guess button is disabled
+   - `submitButton.removeAttribute('disabled')`
